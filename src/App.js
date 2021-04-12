@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import './App.css'
 
+import Header from 'header'
+
 const Section = styled.section`
   display: grid;
   grid-template-areas: 'header header' 'products cart';
@@ -20,16 +22,10 @@ const Cart = styled.section`
   padding: 1rem;
 `
 
-const Header = styled.header`
-  grid-area: header;
-  border-bottom: 1px solid #222;
-  padding: 1rem;
-`
-
 const App = () => {
   return (
     <Section>
-      <Header>Shopping Cart</Header>
+      <Header />
       <Products>
         <h2>Product List</h2>
       </Products>

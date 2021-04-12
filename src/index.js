@@ -6,7 +6,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-import configureStore from './configure-store'
+import configureStore from 'configure-store'
 
 const store = configureStore()
 

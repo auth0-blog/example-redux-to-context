@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import './App.css'
 
 import Header from 'header'
+import Products from 'products'
 
 const Section = styled.section`
   display: grid;
@@ -12,7 +13,7 @@ const Section = styled.section`
   gap: 15px;
 `
 
-const Products = styled.section`
+const ProductsWrapper = styled.section`
   grid-area: products;
   padding: 1rem;
 `
@@ -26,9 +27,10 @@ const App = () => {
   return (
     <Section>
       <Header />
-      <Products>
-        <h2>Product List</h2>
-      </Products>
+      <ProductsWrapper>
+        <Products></Products>
+      </ProductsWrapper>
+
       <Cart>
         <h2>Cart</h2>
       </Cart>

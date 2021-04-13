@@ -17,7 +17,6 @@ const StyledHeader = styled.header`
 
 const Heading = styled.h1`
   flex: 1;
-  margin: 0;
 `
 
 const Button = styled.span`

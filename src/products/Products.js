@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import { fetchProducts } from './actions'
 import Product from './Product'
 
 const List = styled.ul`
@@ -11,6 +12,10 @@ const List = styled.ul`
 `
 
 class Products extends React.Component {
+  componentDidMount() {
+    this.props.fetchProducts()
+  }
+
   render() {
     return (
       <>
@@ -35,4 +40,9 @@ Products.propTypes = {
   ),
 }
 
-export default connect((state) => state.products)(Products)
+export default connect(
+  (state) => state.products,
+  (dispatch) => ({
+    fetchProducts: () => dispatch(fetchProducts()),
+  })
+)(Products)

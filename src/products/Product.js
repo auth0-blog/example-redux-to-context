@@ -21,12 +21,24 @@ const Image = styled.img`
   margin: 0.3rem 0;
 `
 
+const Button = styled.span`
+  border-radius: 5px;
+  border: 1px solid;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  margin-top: 0.3rem;
+  padding: 0.3rem;
+
+  color: white;
+  background-color: lightskyblue;
+`
+
 const Product = ({ name, price, image, onClick }) => (
   <StyledProduct>
     <h3>{name}</h3>
     <Image src={image} alt={name}></Image>
     <span>{price}€</span>
-    <button onClick={onClick}>Add</button>
+    <Button onClick={onClick}>Add</Button>
   </StyledProduct>
 )
 

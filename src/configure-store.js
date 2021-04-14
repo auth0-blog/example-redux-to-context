@@ -4,10 +4,15 @@ import thunk from 'redux-thunk'
 
 import { reducer as themeReducer } from 'header'
 import { reducer as productsReducer } from 'products'
+import { reducer as cartReducer } from 'cart'
 
 const store = (initialState = {}) => {
   return createStore(
-    combineReducers({ theme: themeReducer, products: productsReducer }),
+    combineReducers({
+      theme: themeReducer,
+      products: productsReducer,
+      cart: cartReducer,
+    }),
     initialState,
     composeWithDevTools(applyMiddleware(thunk))
   )

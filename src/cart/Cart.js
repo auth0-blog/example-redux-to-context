@@ -1,21 +1,10 @@
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import Heading from './Heading'
 import Item from './Item'
 import Summary from './Summary'
-
-const cart = [
-  {
-    name: 'Chair',
-    quantity: 3,
-    price: '24.95',
-  },
-  {
-    name: 'Couch',
-    quantity: 3,
-    price: '24.95',
-  },
-]
 
 const Table = styled.section`
   margin-top: 1rem;
@@ -41,7 +30,7 @@ const Table = styled.section`
   }
 `
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
     <>
       <h2>Cart</h2>
@@ -56,4 +45,13 @@ const Cart = () => {
   )
 }
 
-export default Cart
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ),
+}
+
+export default connect((state) => state.cart)(Cart)

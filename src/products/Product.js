@@ -21,11 +21,12 @@ const Image = styled.img`
   margin: 0.3rem 0;
 `
 
-const Product = ({ name, price, image }) => (
+const Product = ({ name, price, image, onClick }) => (
   <StyledProduct>
     <h3>{name}</h3>
     <Image src={image} alt={name}></Image>
     <span>{price}€</span>
+    <button onClick={onClick}>Add</button>
   </StyledProduct>
 )
 
@@ -33,6 +34,7 @@ Product.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default Product

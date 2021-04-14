@@ -15,5 +15,6 @@ describe('Products', () => {
 
     await screen.findByText('Chair')
     await screen.findByText('24.95€')
+    await screen.findAllByText('Add')
   })
 })

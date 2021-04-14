@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import { addToCartAction } from 'cart'
 import { fetchProducts } from './actions'
 import Product from './Product'
 
@@ -22,7 +23,11 @@ class Products extends React.Component {
         <h2>Product List</h2>
         <List>
           {this.props.products.map((product) => (
-            <Product key={product.name} {...product} />
+            <Product
+              key={product.name}
+              {...product}
+              onClick={() => this.props.addToCartAction(product.name)}
+            />
           ))}
         </List>
       </>
@@ -38,11 +43,14 @@ Products.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ),
+  fetchProducts: PropTypes.func.isRequired,
+  addToCartAction: PropTypes.func.isRequired,
 }
 
 export default connect(
   (state) => state.products,
   (dispatch) => ({
     fetchProducts: () => dispatch(fetchProducts()),
+    addToCartAction: (productName) => dispatch(addToCartAction(productName)),
   })
 )(Products)

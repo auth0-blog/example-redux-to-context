@@ -34,7 +34,7 @@ const Cart = ({ cart }) => {
   return (
     <>
       <h2>Cart</h2>
-      <Table>
+      <Table data-testid="cart">
         <Heading boxed></Heading>
         {cart.map((item) => (
           <Item key={item.name} {...item}></Item>

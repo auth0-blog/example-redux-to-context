@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { createStructuredSelector } from 'reselect'
 
 import Heading from './Heading'
 import Item from './Item'
 import Summary from './Summary'
+
+import { fullCartSelector, totalSelector } from './selectors'
 
 const Table = styled.section`
   margin-top: 1rem;
@@ -30,7 +33,7 @@ const Table = styled.section`
   }
 `
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, total }) => {
   return (
     <>
       <h2>Cart</h2>
@@ -39,7 +42,7 @@ const Cart = ({ cart }) => {
         {cart.map((item) => (
           <Item key={item.name} {...item}></Item>
         ))}
-        <Summary boxed price="333"></Summary>
+        <Summary boxed price={total}></Summary>
       </Table>
     </>
   )
@@ -52,6 +55,12 @@ Cart.propTypes = {
       quantity: PropTypes.number.isRequired,
     })
   ),
+  total: PropTypes.string.isRequired,
 }
 
-export default connect((state) => state.cart)(Cart)
+export default connect((state) =>
+  createStructuredSelector({
+    cart: fullCartSelector,
+    total: totalSelector,
+  })(state)
+)(Cart)

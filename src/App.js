@@ -3,6 +3,7 @@ import './App.css'
 
 import Header from 'header'
 import Products from 'products'
+import Cart from 'cart'
 
 const Section = styled.section`
   display: grid;
@@ -18,7 +19,7 @@ const ProductsWrapper = styled.section`
   padding: 1rem;
 `
 
-const Cart = styled.section`
+const CartWrapper = styled.section`
   grid-area: cart;
   padding: 1rem;
 `
@@ -31,9 +32,9 @@ const App = () => {
         <Products></Products>
       </ProductsWrapper>
 
-      <Cart>
-        <h2>Cart</h2>
-      </Cart>
+      <CartWrapper>
+        <Cart></Cart>
+      </CartWrapper>
     </Section>
   )
 }

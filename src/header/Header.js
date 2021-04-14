@@ -25,6 +25,9 @@ const Button = styled.span`
   cursor: pointer;
   margin-left: 0.3rem;
   padding: 0.3rem;
+
+  color: ${(props) => props.background};
+  background-color: ${(props) => props.foreground};
 `
 
 const Header = ({ foreground, background, toggle }) => {
@@ -32,7 +35,13 @@ const Header = ({ foreground, background, toggle }) => {
     <StyledHeader foreground={foreground} background={background}>
       <Heading>Shopping Cart</Heading>
       <span>Foreground: {foreground}</span>
-      <Button onClick={() => toggle()}>Toggle</Button>
+      <Button
+        foreground={foreground}
+        background={background}
+        onClick={() => toggle()}
+      >
+        Toggle
+      </Button>
     </StyledHeader>
   )
 }

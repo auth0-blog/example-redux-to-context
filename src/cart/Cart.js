@@ -7,6 +7,7 @@ import Summary from './Summary'
 import { fullCart, total } from './selectors'
 import { useCart } from 'cartProvider'
 import { useProducts } from 'productsProvider'
+import { useMemo } from 'react'
 
 const Table = styled.section`
   margin-top: 1rem;
@@ -36,8 +37,8 @@ const Cart = () => {
   const products = useProducts()
   const { cart } = useCart()
 
-  const extendedCart = fullCart(products, cart)
-  const price = total(products, cart)
+  const extendedCart = useMemo(() => fullCart(products, cart), [products, cart])
+  const price = useMemo(() => total(products, cart), [products, cart])
 
   return (
     <>

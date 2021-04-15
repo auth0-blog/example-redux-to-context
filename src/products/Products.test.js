@@ -4,12 +4,15 @@ import { Provider } from 'react-redux'
 import Products from './Products'
 
 import configureStore from 'configure-store'
+import ProductsProvider from 'productsProvider'
 
 describe('Products', () => {
   it('renders the list of products', async () => {
     render(
       <Provider store={configureStore()}>
-        <Products />
+        <ProductsProvider>
+          <Products />
+        </ProductsProvider>
       </Provider>
     )
 

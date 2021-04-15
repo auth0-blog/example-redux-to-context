@@ -6,37 +6,48 @@ import styled from 'styled-components'
 import { addToCartAction, removeFromCartAction } from 'cart'
 import { fetchProducts } from './actions'
 import Product from './Product'
+import { useProducts } from 'productsProvider'
 
 const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `
 
-class Products extends React.Component {
+class ProductsWrapper extends React.Component {
   componentDidMount() {
     this.props.fetchProducts()
   }
 
   render() {
     return (
-      <>
-        <h2>Product List</h2>
-        <List>
-          {this.props.products.map((product) => (
-            <Product
-              key={product.name}
-              {...product}
-              onAdd={() => this.props.addToCartAction(product.name)}
-              onRemove={() => this.props.removeFromCartAction(product.name)}
-            />
-          ))}
-        </List>
-      </>
+      <Products
+        addToCartAction={this.props.addToCartAction}
+        removeFromCartAction={this.props.removeFromCartAction}
+      />
     )
   }
 }
 
-Products.propTypes = {
+const Products = ({ addToCartAction, removeFromCartAction }) => {
+  const products = useProducts()
+  return (
+    <>
+      <h2>Product List</h2>
+      <List>
+        {products.map((product) => (
+          <Product
+            key={product.name}
+            {...product}
+            onAdd={() => addToCartAction(product.name)}
+            onRemove={() => removeFromCartAction(product.name)}
+          />
+        ))}
+      </List>
+    </>
+  )
+}
+
+ProductsWrapper.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -57,4 +68,4 @@ export default connect(
     removeFromCartAction: (productName) =>
       dispatch(removeFromCartAction(productName)),
   })
-)(Products)
+)(ProductsWrapper)

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import './App.css'
 
+import ThemeProvider from 'themeProvider'
 import Header from 'header'
 import Products from 'products'
 import Cart from 'cart'
@@ -26,16 +27,18 @@ const CartWrapper = styled.section`
 
 const App = () => {
   return (
-    <Section>
-      <Header />
-      <ProductsWrapper>
-        <Products></Products>
-      </ProductsWrapper>
+    <ThemeProvider>
+      <Section>
+        <Header />
+        <ProductsWrapper>
+          <Products></Products>
+        </ProductsWrapper>
 
-      <CartWrapper>
-        <Cart></Cart>
-      </CartWrapper>
-    </Section>
+        <CartWrapper>
+          <Cart></Cart>
+        </CartWrapper>
+      </Section>
+    </ThemeProvider>
   )
 }
 

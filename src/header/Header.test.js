@@ -1,17 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Provider } from 'react-redux'
+import ThemeProvider from 'themeProvider'
 import Header from './Header'
-
-import configureStore from 'configure-store'
 
 describe('Header', () => {
   it('renders the header', async () => {
     render(
-      <Provider store={configureStore()}>
+      <ThemeProvider>
         <Header />
-      </Provider>
+      </ThemeProvider>
     )
 
     await screen.findByText('Shopping Cart')

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useTheme } from 'themeProvider'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -29,13 +29,8 @@ const Button = styled.span`
 `
 
 const Header = () => {
-  const [theme, setTheme] = useState({
-    foreground: 'black',
-    background: 'white',
-  })
+  const { theme, toggle } = useTheme()
   const { foreground, background } = theme
-  const toggle = () =>
-    setTheme({ foreground: background, background: foreground })
 
   return (
     <StyledHeader foreground={foreground} background={background}>

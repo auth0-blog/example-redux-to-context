@@ -9,7 +9,10 @@ const enrich = (item, products) => {
 export const fullCartSelector = createSelector(
   (state) => state.products.products,
   (state) => state.cart.cart,
-  (products, cart) => cart.map((item) => enrich(item, products))
+  (products, cart) =>
+    cart
+      .filter((item) => item.quantity > 0)
+      .map((item) => enrich(item, products))
 )
 
 const sum = (cart) => {

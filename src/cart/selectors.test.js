@@ -25,6 +25,10 @@ const state = {
         name: 'Couch',
         quantity: 1,
       },
+      {
+        name: 'Stool',
+        quantity: 0,
+      },
     ],
   },
 }

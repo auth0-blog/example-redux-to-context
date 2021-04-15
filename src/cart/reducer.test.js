@@ -1,5 +1,5 @@
 import reducer, { initialState } from './reducer'
-import { addToCartAction } from './actions'
+import { addToCartAction, removeFromCartAction } from './actions'
 
 describe('cart reducer', () => {
   it('adds product to cart', () => {
@@ -21,6 +21,18 @@ describe('cart reducer', () => {
       { name: 'Couch', quantity: 1 },
       { name: 'Table', quantity: 1 },
     ]
+    expect(state).toEqual({
+      cart,
+    })
+  })
+
+  it('removes product from cart', () => {
+    const action = addToCartAction('Couch')
+    const state = reducer(
+      reducer(initialState, action),
+      removeFromCartAction('Couch')
+    )
+    const cart = [{ name: 'Couch', quantity: 0 }]
     expect(state).toEqual({
       cart,
     })

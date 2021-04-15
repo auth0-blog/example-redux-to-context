@@ -35,5 +35,9 @@ describe('App', () => {
 
     await within(screen.getByTestId('cart')).findByText('49,90 €')
     await within(screen.getByTestId('cart')).findByText('245,24 €')
+
+    userEvent.click(screen.getAllByText('Remove')[0])
+
+    await within(screen.getByTestId('cart')).findByText('220,29 €')
   })
 })

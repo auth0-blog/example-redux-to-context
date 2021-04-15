@@ -32,17 +32,20 @@ const Button = styled.span`
   padding: 0.3rem;
 
   color: white;
-  background-color: lightskyblue;
+  background-color: ${(props) => (props.color ? props.color : 'lightskyblue')};
 `
 
-const Product = ({ name, price, image, onClick }) => (
+const Product = ({ name, price, image, onAdd, onRemove }) => (
   <StyledProduct>
     <h3>{name}</h3>
     <Image src={image} alt={name}></Image>
     <span>
       <Money amount={price} />
     </span>
-    <Button onClick={onClick}>Add</Button>
+    <Button onClick={onAdd}>Add</Button>
+    <Button color="pink" onClick={onRemove}>
+      Remove
+    </Button>
   </StyledProduct>
 )
 
@@ -50,7 +53,8 @@ Product.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 }
 
 export default Product

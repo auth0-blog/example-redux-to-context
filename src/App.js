@@ -6,6 +6,7 @@ import Header from 'header'
 import Products from 'products'
 import Cart from 'cart'
 import ProductsProvider from 'productsProvider'
+import CartProvider from 'cartProvider'
 
 const Section = styled.section`
   display: grid;
@@ -36,9 +37,11 @@ const App = () => {
             <Products></Products>
           </ProductsWrapper>
 
-          <CartWrapper>
-            <Cart></Cart>
-          </CartWrapper>
+          <CartProvider>
+            <CartWrapper>
+              <Cart></Cart>
+            </CartWrapper>
+          </CartProvider>
         </ProductsProvider>
       </Section>
     </ThemeProvider>

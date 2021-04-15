@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import Money from 'components/money'
+
 const StyledProduct = styled.div`
   display: flex;
   flex: 44%;
@@ -37,7 +39,9 @@ const Product = ({ name, price, image, onClick }) => (
   <StyledProduct>
     <h3>{name}</h3>
     <Image src={image} alt={name}></Image>
-    <span>{price}€</span>
+    <span>
+      <Money amount={price} />
+    </span>
     <Button onClick={onClick}>Add</Button>
   </StyledProduct>
 )

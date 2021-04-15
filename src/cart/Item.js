@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types'
 
+import Money from 'components/money'
+
 const Item = ({ name, quantity, price }) => (
   <ul>
     <li>{name}</li>
     <li>{quantity}</li>
-    <li>{price}€</li>
+    <li>
+      <Money amount={price} />
+    </li>
   </ul>
 )
 

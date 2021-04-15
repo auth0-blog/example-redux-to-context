@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types'
 
+import Money from 'components/money'
+
 const Summary = ({ price }) => (
   <ul className="boxed">
     <li>Total</li>
-    <li>{price}€</li>
+    <li>
+      <Money amount={price} />
+    </li>
   </ul>
 )
 

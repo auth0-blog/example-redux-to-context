@@ -33,7 +33,7 @@ describe('App', () => {
     await within(screen.getByTestId('cart')).findByText('Chair')
     await within(screen.getByTestId('cart')).findByText('Couch')
 
-    await within(screen.getByTestId('cart')).findByText('49.9€')
-    await within(screen.getByTestId('cart')).findByText('245.24€')
+    await within(screen.getByTestId('cart')).findByText('49,90 €')
+    await within(screen.getByTestId('cart')).findByText('245,24 €')
   })
 })

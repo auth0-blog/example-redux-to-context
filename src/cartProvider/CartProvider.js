@@ -9,13 +9,12 @@ const CartProvider = ({ children }) => {
     updateCart((draft) => {
       let item = draft.find((elem) => elem.name === productName)
 
-      if (item) {
-        item.quantity += 1
-        return
+      if (!item) {
+        item = { name: productName, quantity: 0 }
+        draft.push(item)
       }
 
-      item = { name: productName, quantity: 0 }
-      draft.push(item)
+      item.quantity += 1
     })
   }
   const removeFromCart = (productName) => {

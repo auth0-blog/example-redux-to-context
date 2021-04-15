@@ -5,13 +5,16 @@ import Products from './Products'
 
 import configureStore from 'configure-store'
 import ProductsProvider from 'productsProvider'
+import CartProvider from 'cartProvider'
 
 describe('Products', () => {
   it('renders the list of products', async () => {
     render(
       <Provider store={configureStore()}>
         <ProductsProvider>
-          <Products />
+          <CartProvider>
+            <Products />
+          </CartProvider>
         </ProductsProvider>
       </Provider>
     )

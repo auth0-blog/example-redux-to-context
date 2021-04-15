@@ -1,16 +1,18 @@
 import { render, screen } from '@testing-library/react'
 
-import { Provider } from 'react-redux'
 import Cart from './Cart'
 
-import configureStore from 'configure-store'
+import ProductsProvider from 'productsProvider'
+import CartProvider from 'cartProvider'
 
 describe('Cart', () => {
   it('renders cart', async () => {
     render(
-      <Provider store={configureStore()}>
-        <Cart />
-      </Provider>
+      <ProductsProvider>
+        <CartProvider>
+          <Cart />
+        </CartProvider>
+      </ProductsProvider>
     )
 
     await screen.findByText('Name')

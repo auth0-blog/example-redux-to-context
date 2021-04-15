@@ -6,14 +6,19 @@ const enrich = (item, products) => {
   return { ...item, price }
 }
 
+export const fullCart = (products, cart) =>
+  cart.filter((item) => item.quantity > 0).map((item) => enrich(item, products))
+
 export const fullCartSelector = createSelector(
   (state) => state.products.products,
   (state) => state.cart.cart,
-  (products, cart) =>
-    cart
-      .filter((item) => item.quantity > 0)
-      .map((item) => enrich(item, products))
+  (products, cart) => fullCart(products, cart)
 )
+
+export const total = (products, cart) =>
+  fullCart(products, cart)
+    .reduce((acc, item) => acc + parseFloat(item.price), 0)
+    .toString()
 
 const sum = (cart) => {
   const total = cart.reduce((acc, item) => acc + parseFloat(item.price), 0)

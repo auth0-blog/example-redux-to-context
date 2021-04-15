@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useImmer } from 'use-immer'
 
-const Context = React.createContext([])
+const Context = React.createContext()
 
 const CartProvider = ({ children }) => {
   const [cart, updateCart] = useImmer([])

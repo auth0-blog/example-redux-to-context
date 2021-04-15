@@ -32,12 +32,12 @@ const App = () => {
     <ThemeProvider>
       <Section>
         <ProductsProvider>
-          <Header />
-          <ProductsWrapper>
-            <Products></Products>
-          </ProductsWrapper>
-
           <CartProvider>
+            <Header />
+            <ProductsWrapper>
+              <Products></Products>
+            </ProductsWrapper>
+
             <CartWrapper>
               <Cart></Cart>
             </CartWrapper>

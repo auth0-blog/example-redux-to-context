@@ -5,6 +5,7 @@ import ThemeProvider from 'themeProvider'
 import Header from 'header'
 import Products from 'products'
 import Cart from 'cart'
+import ProductsProvider from 'productsProvider'
 
 const Section = styled.section`
   display: grid;
@@ -29,14 +30,16 @@ const App = () => {
   return (
     <ThemeProvider>
       <Section>
-        <Header />
-        <ProductsWrapper>
-          <Products></Products>
-        </ProductsWrapper>
+        <ProductsProvider>
+          <Header />
+          <ProductsWrapper>
+            <Products></Products>
+          </ProductsWrapper>
 
-        <CartWrapper>
-          <Cart></Cart>
-        </CartWrapper>
+          <CartWrapper>
+            <Cart></Cart>
+          </CartWrapper>
+        </ProductsProvider>
       </Section>
     </ThemeProvider>
   )

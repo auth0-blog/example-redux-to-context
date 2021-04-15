@@ -26,6 +26,8 @@ describe('App', () => {
       </Provider>
     )
 
+    await screen.findByText('Shopping Cart')
+
     userEvent.click(screen.getAllByText('Add')[0])
     userEvent.click(screen.getAllByText('Add')[0])
     userEvent.click(screen.getAllByText('Add')[1])

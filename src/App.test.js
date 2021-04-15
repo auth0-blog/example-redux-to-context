@@ -1,18 +1,11 @@
 import { render, screen, within } from '@testing-library/react'
-import { Provider } from 'react-redux'
 import userEvent from '@testing-library/user-event'
 
 import App from './App'
 
-import configureStore from 'configure-store'
-
 describe('App', () => {
   it('renders the main application', async () => {
-    render(
-      <Provider store={configureStore()}>
-        <App />
-      </Provider>
-    )
+    render(<App />)
 
     await screen.findByText('Shopping Cart')
     await screen.findByText('Product List')
@@ -20,11 +13,7 @@ describe('App', () => {
   })
 
   it('can add products to the cart', async () => {
-    render(
-      <Provider store={configureStore()}>
-        <App />
-      </Provider>
-    )
+    render(<App />)
 
     await screen.findByText('Shopping Cart')
 

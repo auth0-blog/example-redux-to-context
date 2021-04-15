@@ -1,4 +1,4 @@
-import { fullCartSelector, fullCart, totalSelector, total } from './selectors'
+import { fullCart, total } from './selectors'
 
 const products = [
   {
@@ -28,26 +28,7 @@ const cart = [
   },
 ]
 
-const state = {
-  products: {
-    products,
-  },
-  cart: {
-    cart,
-  },
-}
-
 describe('selectors', () => {
-  describe('fullCartSelector', () => {
-    it('enhances the cart', () => {
-      const result = fullCartSelector(state)
-      expect(result).toEqual([
-        { name: 'Chair', quantity: 2, price: '49.9' },
-        { name: 'Couch', quantity: 1, price: '195.34' },
-      ])
-    })
-  })
-
   describe('fullCart', () => {
     it('enhances the cart', () => {
       const result = fullCart(products, cart)
@@ -55,12 +36,6 @@ describe('selectors', () => {
         { name: 'Chair', quantity: 2, price: '49.9' },
         { name: 'Couch', quantity: 1, price: '195.34' },
       ])
-    })
-  })
-
-  describe('totalSelector', () => {
-    it('computes the total price', () => {
-      expect(totalSelector(state)).toEqual('245.24')
     })
   })
 

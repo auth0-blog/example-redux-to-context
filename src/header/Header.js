@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { toggleAction } from './actions'
+import { useState } from 'react'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -30,7 +28,15 @@ const Button = styled.span`
   background-color: ${(props) => props.foreground};
 `
 
-const Header = ({ foreground, background, toggle }) => {
+const Header = () => {
+  const [theme, setTheme] = useState({
+    foreground: 'black',
+    background: 'white',
+  })
+  const { foreground, background } = theme
+  const toggle = () =>
+    setTheme({ foreground: background, background: foreground })
+
   return (
     <StyledHeader foreground={foreground} background={background}>
       <Heading>Shopping Cart</Heading>
@@ -46,14 +52,4 @@ const Header = ({ foreground, background, toggle }) => {
   )
 }
 
-Header.propTypes = {
-  foreground: PropTypes.string.isRequired,
-  background: PropTypes.string.isRequired,
-}
-
-export default connect(
-  (state) => state.theme,
-  (dispatch) => ({
-    toggle: () => dispatch(toggleAction()),
-  })
-)(Header)
+export default Header

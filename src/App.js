@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import './App.css'
 
 import ThemeProvider from 'themeProvider'
@@ -8,42 +7,25 @@ import Cart from 'cart'
 import ProductsProvider from 'productsProvider'
 import CartProvider from 'cartProvider'
 
-const Section = styled.section`
-  display: grid;
-  grid-template-areas: 'header header' 'products cart';
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  height: 100vh;
-  gap: 15px;
-`
-
-const ProductsWrapper = styled.section`
-  grid-area: products;
-  padding: 1rem;
-`
-
-const CartWrapper = styled.section`
-  grid-area: cart;
-  padding: 1rem;
-`
+import styles from './App.module.css'
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Section>
+      <section className={styles.section}>
         <ProductsProvider>
           <CartProvider>
             <Header />
-            <ProductsWrapper>
+            <section className={styles.products}>
               <Products></Products>
-            </ProductsWrapper>
+            </section>
 
-            <CartWrapper>
+            <section className={styles.cart}>
               <Cart></Cart>
-            </CartWrapper>
+            </section>
           </CartProvider>
         </ProductsProvider>
-      </Section>
+      </section>
     </ThemeProvider>
   )
 }

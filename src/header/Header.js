@@ -1,49 +1,34 @@
-import styled from 'styled-components'
 import { useTheme } from 'themeProvider'
+import cx from 'classnames'
 
-const StyledHeader = styled.header`
-  display: flex;
-  align-items: center;
-
-  grid-area: header;
-  border-bottom: 1px solid #222;
-  padding: 1rem;
-
-  color: ${(props) => props.foreground};
-  background-color: ${(props) => props.background};
-`
-
-const Heading = styled.h1`
-  flex: 1;
-`
-
-const Button = styled.span`
-  border-radius: 5px;
-  border: 1px solid;
-  cursor: pointer;
-  margin-left: 0.3rem;
-  padding: 0.3rem;
-
-  color: ${(props) => props.background};
-  background-color: ${(props) => props.foreground};
-`
+import styles from './Header.module.css'
 
 const Header = () => {
   const { theme, toggle } = useTheme()
   const { foreground, background } = theme
 
   return (
-    <StyledHeader foreground={foreground} background={background}>
-      <Heading>Shopping Cart</Heading>
+    <header
+      className={cx(
+        styles.header,
+        styles[foreground],
+        styles[`${background}-bg`]
+      )}
+    >
+      <h1 className={styles.heading}>Shopping Cart</h1>
       <span>Foreground: {foreground}</span>
-      <Button
-        foreground={foreground}
-        background={background}
+      <span
+        className={cx(
+          styles.button,
+          styles.header,
+          styles[background],
+          styles[`${foreground}-bg`]
+        )}
         onClick={() => toggle()}
       >
         Toggle
-      </Button>
-    </StyledHeader>
+      </span>
+    </header>
   )
 }
 

@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+
+  grid-area: header;
+  border-bottom: 1px solid #222;
+  padding: 1rem;
+}
+
+.white {
+  color: white;
+  background-color: black;
+}
+
+.black {
+  color: black;
+  background-color: white;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.black-bg {
+  background-color: black;
+}
+
+.heading {
+  flex: 1;
+}
+
+.button {
+  border-radius: 5px;
+  border: 1px solid;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  padding: 0.3rem;
+}

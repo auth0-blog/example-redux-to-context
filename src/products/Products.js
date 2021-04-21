@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 
 import { addToCartAction, removeFromCartAction } from 'cart'
 import { fetchProducts } from './actions'
 import Product from './Product'
 
-const List = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-`
+import styles from './Products.module.css'
 
 class Products extends React.Component {
   componentDidMount() {
@@ -21,7 +17,7 @@ class Products extends React.Component {
     return (
       <>
         <h2>Product List</h2>
-        <List>
+        <ul className={styles.list}>
           {this.props.products.map((product) => (
             <Product
               key={product.name}
@@ -30,7 +26,7 @@ class Products extends React.Component {
               onRemove={() => this.props.removeFromCartAction(product.name)}
             />
           ))}
-        </List>
+        </ul>
       </>
     )
   }

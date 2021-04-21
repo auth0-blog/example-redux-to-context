@@ -1,0 +1,18 @@
+.section {
+  display: grid;
+  grid-template-areas: 'header header' 'products cart';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  gap: 15px;
+}
+
+.products {
+  grid-area: products;
+  padding: 1rem;
+}
+
+.cart {
+  grid-area: cart;
+  padding: 1rem;
+}

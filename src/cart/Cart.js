@@ -30,6 +30,7 @@ Cart.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       quantity: PropTypes.number.isRequired,
+      price: PropTypes.string.isRequired,
     })
   ),
   total: PropTypes.string.isRequired,
